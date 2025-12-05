@@ -77,12 +77,17 @@ public class Set {
     public List<String> getElements() {
         List<String> result = new ArrayList<>();
 
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < universe.size(); i++) {
             if ((set & (1 << i)) != 0) {
                 result.add(universe.get(i));
             }
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getElements().toString();
     }
 
 }
