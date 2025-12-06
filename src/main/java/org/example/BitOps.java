@@ -20,7 +20,7 @@ public class BitOps {
         if (value) {
             return (1 << position) | number;
         } else {
-            return number & ~(1 << position);
+            return clearBit(number, position);
         }
     }
 }

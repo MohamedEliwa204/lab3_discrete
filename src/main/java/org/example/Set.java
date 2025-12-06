@@ -20,7 +20,21 @@ public class Set {
         for (int i = 0; i < universe.size(); i++) {
             index.put(universe.get(i), i);
         }
+    }
 
+    public List<String> getUniverse() {
+        return universe;
+    }
+
+    public void initializeSetFromList(List<String> set) throws InvalidSetException {
+        for (int i = 0; i < set.size(); i++) {
+            if (index.containsKey(set.get(i))) {
+                addString(set.get(i));
+            }
+            else {
+                throw new InvalidSetException("Invalid Set.");
+            }
+        }
     }
 
     public void setSet(int set) {
@@ -45,13 +59,13 @@ public class Set {
         set = bitOps.setBit(set, idx);
     }
 
-    public Set union(Set anotehrSet) {
+    public Set union(Set anotherSet) {
         Set result = new Set(universe);
-        result.setSet(this.set | anotehrSet.getSet());
+        result.setSet(this.set | anotherSet.getSet());
         return result;
     }
 
-    public Set intersiction(Set anotherSet) {
+    public Set intersection(Set anotherSet) {
         Set result = new Set(universe);
         result.setSet(this.set & anotherSet.getSet());
         return result;
